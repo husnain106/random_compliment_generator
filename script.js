@@ -4,13 +4,30 @@ const textOptions = [
     "Option 3",
     "Option 4",
     "Option 5"
-    // Add more options to the array
 ];
 
-function generateRandomText() {
-    const randomIndex = Math.floor(Math.random() * textOptions.length);
-    const randomText = textOptions[randomIndex];
-    document.getElementById("text-display").textContent = randomText;
+const colorOptions = [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "purple",
+    "orange",
+];
+
+function generateRandomTextAndColors() {
+    const textDisplay = document.getElementById("text-display");
+    const randomTextIndex = Math.floor(Math.random() * textOptions.length);
+    const randomTextColorIndex = Math.floor(Math.random() * colorOptions.length);
+    let randomBackgroundColorIndex;
+
+    do {
+        randomBackgroundColorIndex = Math.floor(Math.random() * colorOptions.length);
+    } while (randomBackgroundColorIndex === randomTextColorIndex);
+
+    textDisplay.textContent = textOptions[randomTextIndex];
+    textDisplay.style.color = colorOptions[randomTextColorIndex];
+    textDisplay.style.backgroundColor = colorOptions[randomBackgroundColorIndex];
 }
 
-generateRandomText();
+generateRandomTextAndColors();
